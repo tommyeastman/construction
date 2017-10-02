@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import DeleteDataButton from './DeleteDataButton';
 
 class Value extends Component {
     render() {
-        return <p>{this.props.valProp}</p>;
+        const {keyProp, valProp} = this.props;
+        //console.log(keyProp);
+        //console.log(valProp);
+        return (
+        <tr>
+            <td><p>{keyProp}</p></td>
+            <td><p>{valProp}</p></td>
+            <td><DeleteDataButton keyPassed={keyProp}></DeleteDataButton></td>
+        </tr>
+        );
     }
 }
 
 class ViewData extends Component {
     constructor(props) {
         super(props);
-        this.state = { values: null };
+        this.state = { keys: null, values: null };
     }
 
     getData() {
@@ -19,20 +29,26 @@ class ViewData extends Component {
         firebase.database().ref(`/users/${currentUser.uid}/data`)
             .on('value', snapshot => {
                 const data = snapshot.val();
-                this.setState({ values: Object.values(data) })
+                if (snapshot.val() !==null){
+                this.setState({ keys: Object.keys(data), values: Object.values(data) })}
             })
     }
 
     mapValues() {
-        const { values } = this.state;
+        const { keys, values } = this.state;
+        //console.log(keys);
+        ///console.log(values);
 
         if (values === null) {
             this.getData();
         } else {
             return (
-                values.map( (value) => {
-                    return <Value valProp={value} />
+                keys.map( (key) => {
+                    return <Value keyProp={key} />
                 } )
+                /*values.map( (value) => {
+                    return <Value valProp={value} />
+                } )*/
             );
         }
     }
@@ -41,7 +57,9 @@ class ViewData extends Component {
         return (
             <div className="viewData">
                 <p>Data below</p>
+                <table>
                 {this.mapValues()}
+                </table>
             </div>
         );
     }

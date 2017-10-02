@@ -435,3 +435,7 @@ div.addData {
 input.addData {
   margin-bottom: unset;
 }
+
+table {
+  margin: auto;
+}
