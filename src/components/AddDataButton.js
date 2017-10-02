@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import '../App.css';
+//import '../App.css';
 
 class AddDataButton extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: null };
+      }
+
     onButtonPress () {
         const { currentUser } = firebase.auth();
-        console.log("hey");
-        firebase.database().ref(`/users/${currentUser.uid}/data`).push("hey");
+        firebase.database().ref(`/users/${currentUser.uid}/data`).push(this.state.data);
+    }
+
+    whenTyped(e) {
+        this.setState({ data: e.target.value });
     }
 
     render() {
         return (
-            <button
+            <div className="addData">
+            <span><input className="addData" type="text" onChange={this.whenTyped.bind(this)}></input></span>
+            <span><button
             onClick={this.onButtonPress.bind(this)}
             >
             Add Data
-            </button>
+            </button></span>
+            </div>
         )
     }
 }

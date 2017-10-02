@@ -423,3 +423,15 @@ there.
   margin-top: 10px;
   padding: 10px;
 }
+
+
+div.addData {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+input.addData {
+  margin-bottom: unset;
+}
