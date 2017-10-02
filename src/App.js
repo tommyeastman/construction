@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import logo from './man.svg';
-import './App.css';
+//import './App.css';
+import './normalize.css'
+import './skeleton.css'
 import LoginForm from './components/LoginForm';
 import AddData from './components/AddData';
 
