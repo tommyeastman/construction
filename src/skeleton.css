@@ -417,3 +417,9 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+.viewData {
+  margin-left: 20px;
+  margin-top: 10px;
+  padding: 10px;
+}

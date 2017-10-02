@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import '../App.css';
+import DataScreen from '../screens/DataScreen';
 
 class LoginButton extends Component {
     constructor(props) {
@@ -53,6 +54,8 @@ class LoginButton extends Component {
         if (this.state.user === null) {
         return (
             <div className = "container">
+                <p>tommyeastman1@gmail.com</p>
+                <p>password</p>
             <div><input id="emailInput" type="email" placeholder="email@gmail.com" onChange={this.updateEmail.bind(this)}></input></div>
             <div><input id="passwordInput" type="password" placeholder="******" onChange={this.updatePassword.bind(this)}></input></div>
             <div className = "container"><button
@@ -61,7 +64,7 @@ class LoginButton extends Component {
             </div>
         );
         }
-        return <div></div>;
+        return <DataScreen/>;
     }
 }
 
