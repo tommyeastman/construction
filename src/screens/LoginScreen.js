@@ -23,8 +23,7 @@ class LoginScreen extends Component {
 
     onButtonPress() {
         const { email, password } = this.state;
-        console.log(email);
-        console.log(password);
+        
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
             this.onLoginSuccess();
