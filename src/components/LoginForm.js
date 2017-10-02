@@ -13,7 +13,7 @@ class LoginButton extends Component {
         this.setState({user: firebase.auth().currentUser});
         //console.log(this.state.user);
         //window.location.href = "http://stackoverflow.com";
-        window.location.href = "./addData.html";
+        //window.location.href = "./addData.html";
     }
 
     onLoginFail() {
