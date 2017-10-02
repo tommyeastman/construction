@@ -10,10 +10,10 @@ class LoginScreen extends Component {
       }
 
     onLoginSuccess() {
+        const { currentUser } = firebase.auth();
         console.log("success");
-        this.setState({user: firebase.auth().currentUser});
-        //console.log(this.state.user);
-        //window.location.href = "http://stackoverflow.com";
+        this.setState({user: currentUser});
+        firebase.database().ref(`/users/${currentUser.uid}/LogIns`).push(Date());
         //window.location.href = "./addData.html";
     }
 
@@ -42,12 +42,10 @@ class LoginScreen extends Component {
 
     updateEmail(e){
         this.setState({email: e.target.value});
-        //console.log(this.state);
     }
 
     updatePassword(e){
         this.setState({password: e.target.value});
-        //console.log(this.state);
     }
 
     render() {

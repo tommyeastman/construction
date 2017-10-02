@@ -17,15 +17,30 @@ class AddDataButton extends Component {
         this.setState({ data: e.target.value });
     }
 
+    keyCodeListener(e) {
+        if(e.key=='Enter'){
+            this.onButtonPress();
+        }
+    }
+
     render() {
         return (
             <div className="addData">
-            <span><input className="addData" type="text" onChange={this.whenTyped.bind(this)}></input></span>
-            <span><button
-            onClick={this.onButtonPress.bind(this)}
-            >
-            Add Data
-            </button></span>
+            <span>
+                <input
+                className="addData"
+                type="text"
+                onChange={this.whenTyped.bind(this)}
+                onKeyPress={this.keyCodeListener.bind(this)}
+                ></input>
+            </span>
+            <span>
+                <button
+                onClick={this.onButtonPress.bind(this)}
+                >
+                Add Data
+                </button>
+            </span>
             </div>
         )
     }

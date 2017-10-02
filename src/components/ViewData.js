@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import lodash from 'lodash';
 import DeleteDataButton from './DeleteDataButton';
 
 class Value extends Component {
@@ -9,7 +10,6 @@ class Value extends Component {
         //console.log(valProp);
         return (
         <tr>
-            <td><p>{keyProp}</p></td>
             <td><p>{valProp}</p></td>
             <td><DeleteDataButton keyPassed={keyProp}></DeleteDataButton></td>
         </tr>
@@ -36,19 +36,14 @@ class ViewData extends Component {
 
     mapValues() {
         const { keys, values } = this.state;
-        //console.log(keys);
-        ///console.log(values);
 
         if (values === null) {
             this.getData();
         } else {
             return (
-                keys.map( (key) => {
-                    return <Value keyProp={key} />
-                } )
-                /*values.map( (value) => {
-                    return <Value valProp={value} />
-                } )*/
+                lodash.zip(keys, values).map((i) => {
+                return <Value keyProp={i[0]} valProp={i[1]} />
+                })
             );
         }
     }
