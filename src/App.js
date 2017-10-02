@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import logo from './img/man.svg';
-//import './App.css';
 import './normalize.css';
 import './skeleton.css';
-import LoginForm from './components/LoginForm';
-//import DataScreen from './screens/DataScreen';
+import LoginScreen from './screens/LoginScreen';
 
 class App extends Component {
   componentWillMount() {
@@ -26,7 +24,7 @@ class App extends Component {
           <img src={logo} className='App-logo' alt='logo' />
           <h1 className='App-title'>Construction Data</h1>
         </header>
-        <LoginForm/>
+        <LoginScreen/>
       </div>
     );
   }

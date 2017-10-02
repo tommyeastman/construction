@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import '../App.css';
 import DataScreen from '../screens/DataScreen';
 
-class LoginButton extends Component {
+class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = { email: '', password: '', user: null };
@@ -68,4 +68,4 @@ class LoginButton extends Component {
     }
 }
 
-export default LoginButton;
+export default LoginScreen;
