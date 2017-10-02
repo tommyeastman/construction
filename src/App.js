@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import logo from './man.svg';
+import logo from './img/man.svg';
 //import './App.css';
 import './normalize.css'
 import './skeleton.css'
 import LoginForm from './components/LoginForm';
-import AddData from './components/AddData';
+import AddDataButton from './components/AddDataButton';
 
 class App extends Component {
   componentWillMount() {
@@ -27,7 +27,7 @@ class App extends Component {
           <h1 className='App-title'>Construction Data</h1>
         </header>
         <LoginForm/>
-        <AddData/>
+        <AddDataButton/>
       </div>
     );
   }

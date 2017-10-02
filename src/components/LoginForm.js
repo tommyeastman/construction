@@ -5,11 +5,15 @@ import '../App.css';
 class LoginButton extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', password: '' };
+        this.state = { email: '', password: '', user: null };
       }
 
     onLoginSuccess() {
         console.log("success");
+        this.setState({user: firebase.auth().currentUser});
+        //console.log(this.state.user);
+        //window.location.href = "http://stackoverflow.com";
+        window.location.href = "./addData.html";
     }
 
     onLoginFail() {
@@ -46,6 +50,7 @@ class LoginButton extends Component {
     }
 
     render() {
+        if (this.state.user === null) {
         return (
             <div className = "container">
             <div><input id="emailInput" type="email" placeholder="email@gmail.com" onChange={this.updateEmail.bind(this)}></input></div>
@@ -55,6 +60,8 @@ class LoginButton extends Component {
             >Login/Sign Up</button></div>
             </div>
         );
+        }
+        return <div></div>;
     }
 }
 
